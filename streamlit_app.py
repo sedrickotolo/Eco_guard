@@ -1,7 +1,5 @@
-
 import pandas as pd
 import geopandas as gpd
-
 
 # Load air pollution data from global.csv
 air_pollution_data = pd.read_csv('global.csv')
@@ -10,9 +8,6 @@ air_pollution_data = pd.read_csv('global.csv')
 uganda_districts = gpd.read_file('uganda_districts.geojson')
 
 air_pollution_data.head(5)
-
-
-# In[7]:
 
 
 import pandas as pd
