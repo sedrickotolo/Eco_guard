@@ -1,5 +1,3 @@
-
-
 import pandas as pd
 import geopandas as gpd
 import folium
@@ -21,7 +19,7 @@ def get_district_name(latitude, longitude):
     geolocator = Nominatim(user_agent="geoapiExercises")
     location = geolocator.reverse(f"{latitude}, {longitude}", exactly_one=True)
     address = location.raw['address']
-    district_name = address.get('county', '')  # Use 'county' instead of 'country' to get district name
+    district_name = address.get('country', '')  # Modify this based on the location data structure
 
     return district_name
 
@@ -56,7 +54,7 @@ def main():
     st.write(f"You are in {district_name}.")
 
     # Generate and display air pollution data for the district
-    district_pollution = air_pollution_data[air_pollution_data['Country'] == district_name]
+    district_pollution = air_pollution_data[air_pollution_data['name'] == district_name]
 
     st.subheader("Air Pollution Data for Your District")
     st.write(district_pollution)
@@ -72,18 +70,5 @@ def main():
     folium.Marker([latitude, longitude], tooltip="Your Location").add_to(m)
     st.write(m)
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
